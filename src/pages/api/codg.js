@@ -26,17 +26,17 @@ export default async function handler(req, res) {
   const authorization = req.headers.authorization;
 
   try {
-    const resp = await fetch('https://api.ms3.net/api/V1/FTTPOrders/Create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: authorization,
-      },
-      body: JSON.stringify(bodyData),
-    });
+    // const resp = await fetch('https://api.ms3.net/api/V1/FTTPOrders/Create', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Authorization: authorization,
+    //   },
+    //   body: JSON.stringify(bodyData),
+    // });
 
-    const lData = await resp.json();
-    res.status(200).json(lData);
+    // const lData = await resp.json();
+    res.status(200).json('lData');
   } catch (error) {
     res.status(400).json(error);
   }
