@@ -30,13 +30,13 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-
         Authorization: authorization,
       },
       body: JSON.stringify(bodyData),
     });
 
-    res.status(200).json(await resp.json());
+    const lData = await resp.json();
+    res.status(200).json(lData);
   } catch (error) {
     res.status(400).json(error);
   }
