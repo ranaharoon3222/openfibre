@@ -27,7 +27,7 @@ export default async function handler(req, res) {
   const authorization = req.headers.authorization;
 
   try {
-    const resp = await axios.get(
+    const resp = await axios.post(
       'https://api.ms3.net/api/V1/FTTPOrders/Create',
       {
         headers: {
