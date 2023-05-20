@@ -24,6 +24,7 @@ export default async function handler(req, res) {
 
   const bodyData = req.body;
   const authorization = req.headers.authorization;
+  console.log(bodyData);
 
   try {
     const resp = await fetch('https://api.ms3.net/api/V1/FTTPOrders/Create', {
