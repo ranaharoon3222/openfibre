@@ -27,18 +27,16 @@ export default async function handler(req, res) {
   const authorization = req.headers.authorization;
 
   try {
-    const resp = await axios.post(
-      'https://api.ms3.net/api/V1/FTTPOrders/Create',
-      {
-        headers: {
-          Authorization: authorization,
-          'Content-Type': 'application/json',
-        },
-        bodyData: JSON.stringify(bodyData),
-      }
-    );
+    const resp = await fetch('https://api.ms3.net/api/V1/FTTPOrders/Create', {
+      method: 'POST',
+      headers: {
+        Authorization: authorization,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyData),
+    });
 
-    res.status(200).json(resp.data);
+    res.status(200).json(await resp.json());
   } catch (error) {
     res.status(400).json(error);
   }
