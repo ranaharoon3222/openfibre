@@ -34,7 +34,7 @@ export default async function handler(req, res) {
           Authorization: authorization,
           'Content-Type': 'application/json',
         },
-        data: JSON.stringify(bodyData),
+        bodyData: JSON.stringify(bodyData),
       }
     );
 
