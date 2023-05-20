@@ -1,7 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import Cors from 'cors';
-import axios from 'axios';
 
 const cors = Cors({
   methods: ['POST', 'GET', 'HEAD'],
@@ -30,8 +29,9 @@ export default async function handler(req, res) {
     const resp = await fetch('https://api.ms3.net/api/V1/FTTPOrders/Create', {
       method: 'POST',
       headers: {
-        Authorization: authorization,
         'Content-Type': 'application/json',
+
+        Authorization: authorization,
       },
       body: JSON.stringify(bodyData),
     });
