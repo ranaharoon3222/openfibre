@@ -25,7 +25,8 @@ export default async function handler(req, res) {
   const bodyData = req.body;
   const authorization = req.headers.authorization;
   console.log(bodyData);
-  const rData = JSON.parse(bodyData);
+  const sData = JSON.stringify(bodyData);
+  const rData = JSON.parse(sData);
   let productId;
   let productPrice;
 
@@ -53,10 +54,8 @@ export default async function handler(req, res) {
       body: JSON.stringify(rData),
     });
 
-    const meetingOrder = await resp.json();
-
     const contactResp = await fetch(
-      'https://openvoipfibre.eu.teamwork.com/crm/api/v2/deals.json',
+      'https://openvoipfibre.eu.teamwork.com/crm/api/v2/contacts.json',
       {
         method: 'POST',
         headers: {
@@ -74,7 +73,7 @@ export default async function handler(req, res) {
               },
             ],
             firstName: rData.primarySiteContactName,
-            lastName: '',
+            lastName: rData.primarySiteContactName,
             phoneNumbers: [
               {
                 isMain: true,
@@ -119,7 +118,7 @@ export default async function handler(req, res) {
             ],
             contacts: [
               {
-                id: contactData.contact.id,
+                id: contactData?.contact?.id || 0,
                 meta: {
                   isMain: true,
                 },
@@ -133,12 +132,13 @@ export default async function handler(req, res) {
       }
     );
 
-    const dealData = await dealResp.json();
+    const meetingOrder = await resp.json();
 
-    console.log(dealData);
+    const dealData = await dealResp.json();
 
     res.status(200).json({ meetingOrder, dealData, contactData });
   } catch (error) {
+    console.log(error);
     res.status(400).json(error);
   }
 }
