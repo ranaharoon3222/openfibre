@@ -25,8 +25,8 @@ export default async function handler(req, res) {
   const bodyData = req.body;
   const authorization = req.headers.authorization;
   console.log(bodyData);
-  const sData = JSON.stringify(bodyData);
-  const rData = JSON.parse(sData);
+  // const sData = JSON.stringify(bodyData);
+  const rData = JSON.parse(bodyData);
   let productId;
   let productPrice;
 
