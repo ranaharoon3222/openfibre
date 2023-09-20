@@ -3,6 +3,8 @@
 import Cors from 'cors';
 import axios from 'axios';
 
+axios.defaults.timeout = 20000;
+
 const cors = Cors({
   methods: ['POST', 'GET', 'HEAD'],
 });
