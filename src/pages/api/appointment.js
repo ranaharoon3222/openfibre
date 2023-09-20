@@ -2,7 +2,6 @@
 
 import Cors from 'cors';
 import axios from 'axios';
-export const runtime = 'edge';
 
 axios.defaults.timeout = 20000;
 
