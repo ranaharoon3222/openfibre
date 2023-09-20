@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import Cors from 'cors';
+export const runtime = 'edge';
 
 const cors = Cors({
   methods: ['POST', 'GET', 'HEAD'],
